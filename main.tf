@@ -45,7 +45,6 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["890742594807"] # Canonical
 }
 
 resource "aws_instance" "web" {
