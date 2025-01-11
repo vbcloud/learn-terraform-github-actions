@@ -10,7 +10,7 @@ provider "aws" {
 
 terraform {
 
-cloud {
+  cloud {
     organization = "FlemingFriday"
 
     workspaces {
@@ -31,10 +31,10 @@ resource "aws_vpc" "app1" {
   cidr_block = "10.32.0.0/16"
 
   tags = {
-    Name = "app1"
+    Name    = "app1"
     Service = "application1"
-    Owner = "Chewbacca"
-    Planet = "Mustafar"
+    Owner   = "Chewbacca"
+    Planet  = "Mustafar"
   }
 }
 
@@ -295,7 +295,7 @@ resource "aws_route_table_association" "public-eu-west-1c" {
 
 resource "aws_launch_template" "app1_LT" {
   name_prefix   = "app1_LT"
-  image_id      = "ami-06ed60ed1369448bd"  
+  image_id      = "ami-06ed60ed1369448bd"
   instance_type = "t2.micro"
 
   key_name = "MyLinuxBox"
