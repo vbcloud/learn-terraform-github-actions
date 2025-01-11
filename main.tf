@@ -50,7 +50,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami                    = "ami-0a094c309b87cc107"
   instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.web-sg1.id]
+  vpc_security_group_ids = [aws_security_group.web-sg8]
 
   user_data = <<-EOF
               #!/bin/bash
@@ -62,7 +62,7 @@ resource "aws_instance" "web" {
               EOF
 }
 
-resource "aws_security_group" "web-sg1" {
+resource "aws_security_group" "web-sg8" {
   name = "${random_pet.sg.id}-sg"
   ingress {
     from_port   = 8080
