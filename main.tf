@@ -21,7 +21,7 @@ terraform {
   required_version = ">= 1.1.0"
 
   cloud {
-    organization = "balericaclass6"
+    organization = "FlemingFriday"
 
     workspaces {
       name = "learn-terraform-github-actions"
@@ -30,7 +30,7 @@ terraform {
 }
 
 
-resource "random_pet" "sg" {}
+resource "random_pet2" "sg" {}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -62,8 +62,8 @@ resource "aws_instance" "web" {
               EOF
 }
 
-resource "aws_security_group" "web-sg" {
-  name = "${random_pet.sg.id}-sg"
+resource "aws_security_group" "web-sg1" {
+  name = "${random_pet2.sg.id}-sg"
   ingress {
     from_port   = 8080
     to_port     = 8080
