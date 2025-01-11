@@ -5,16 +5,6 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-
-
-terraform {
-    backend "s3" {
-        bucket = "mylocalterraform"
-        key = "MyLinuxBox"
-        region = "eu-west-1"      
-}
-}
-
 #4
 
 terraform {
