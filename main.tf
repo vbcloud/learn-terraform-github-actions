@@ -47,20 +47,7 @@ data "aws_ami" "ubuntu" {
 
 }
 
-resource "aws_instance" "web2" {
-  ami                    = "ami-0a094c309b87cc107"
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.web-sg8]
 
-  user_data = <<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get install -y apache2
-              sed -i -e 's/80/8080/' /etc/apache2/ports.conf
-              echo "Hello World" > /var/www/html/index.html
-              systemctl restart apache2
-              EOF
-}
 
 resource "aws_security_group" "web-sg8" {
   name = "${random_pet.sg.id}-sg"
@@ -82,3 +69,22 @@ resource "aws_security_group" "web-sg8" {
 #output "web-address" {
 #  value = "${aws_instance.web.public_dns}:8080"
 #}
+
+resource "aws_instance" "web12" {
+  ami                    = "ami-0a094c309b87cc107"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.web-sg8]
+
+  user_data = <<-EOF
+              #!/bin/bash
+              apt-get update
+              apt-get install -y apache2
+              sed -i -e 's/80/8080/' /etc/apache2/ports.conf
+              echo "Hello World" > /var/www/html/index.html
+              systemctl restart apache2
+              EOF
+}
+
+
+
+
