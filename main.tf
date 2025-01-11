@@ -47,7 +47,7 @@ data "aws_ami" "ubuntu" {
 
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "web2" {
   ami                    = "ami-0a094c309b87cc107"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.web-sg8]
