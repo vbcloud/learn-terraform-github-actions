@@ -3,15 +3,14 @@ name: "Terraform Plan"
 on:
   pull_request:
 env:
-  TF_CLOUD_ORGANIZATION: "FlemingFriday"
-  TF_API_TOKEN: "${{ secrets.TF_API_TOKEN2 }}"
+  TF_CLOUD_ORGANIZATION: "SonicBoom203"
+  TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
   TF_WORKSPACE: "learn-terraform-github-actions"
   CONFIG_DIRECTORY: "./"
 jobs:
   terraform:
-    - name: "Terraform"
       if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
-    - name: "Terraform Plan"
+      name: "Terraform Plan"
       runs-on: ubuntu-latest
       permissions:
         contents: read
@@ -43,9 +42,9 @@ jobs:
         id: plan-comment
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-            script: |
-              // 1. Retrieve existing bot comments for the PR
-              const { data: comments } = await github.rest.issues.listComments({
+          script: |
+            // 1. Retrieve existing bot comments for the PR
+            const { data: comments } = await github.rest.issues.listComments({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
